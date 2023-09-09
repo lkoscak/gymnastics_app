@@ -1,0 +1,102 @@
+/* fonts */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@200;400&display=swap");
+
+*,
+::after,
+::before {
+	box-sizing: border-box;
+}
+
+:root {
+	/*colors*/
+	--color_primary: #ff2b51;
+	--color_primaryDark: #cd082b;
+	--color_onPrimary: #ffffff;
+	--color_primaryVariantJudge: #ff842b;
+	--color_disabled: #908d9e;
+	--color_secondary: #d6d5dc;
+	--color_tertiaryDark: #6c6a7d;
+	--color_bg_primary: #f5f5f5;
+	--color_bg_primaryDark: #080a0f;
+	--color_bg_base: #ffffff;
+	--color_bg_secondary: #ebebed;
+	--color_bg_secondaryMedium: #f5f5f5;
+	--color_bg_secondaryDark: #222534;
+	--color_bg_secondaryIOS: #efeff1;
+	--color_bg_tertiaryDark: #38354d;
+	--color_text_primary: #080a0f;
+	--color_text_onPrimary: #ffffff;
+	--color_text_primaryLight: #38354d;
+	--color_text_disabled: #cacaca;
+	--color_text_secondary: #72747b;
+	--color_text_secondaryLight: #b2b2b8;
+	--color_divider_dark: #38354d;
+	--color_divider_medium: #d6d5dc;
+	--color_alert: #ea1a40;
+	--color_success: #27c200;
+	--color_warning: #ffb800;
+	--color_userAvatar: #41de1a;
+	--color_bg_me: #13151d;
+	--color_bg_widgets: #13151d;
+	--color_bg_error: #ebfff9;
+	--color_upload: #d0f7c6;
+	--color_success: #eefdea;
+}
+
+html {
+	font-size: 100%;
+} /*16px*/
+
+body {
+	background-color: var(--color_onPrimary);
+	font-family: "Inter", sans-serif;
+	color: var(--color_text_primary);
+	margin: 0;
+	padding: 0;
+	height: 100vh;
+}
+
+#root {
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+}
+
+h1 {
+	font-size: 32px;
+	font-weight: bold;
+}
+h2 {
+	font-size: 22px;
+	font-weight: bold;
+}
+h3 {
+	font-size: 18px;
+	font-weight: bold;
+}
+h4 {
+	font-size: 16px;
+	font-weight: bold;
+}
+
+/*text*/
+.text_lg {
+	font-size: 18px;
+}
+.text_md {
+	font-size: 16px;
+}
+.text_sm {
+	font-size: 14px;
+}
+.text_sm_bold {
+	font-size: 14px;
+	font-weight: bold;
+}
+.text_xs {
+	font-size: 12px;
+}
+.text_xs_semiBold {
+	font-size: 12px;
+	font-weight: 300;
+}
