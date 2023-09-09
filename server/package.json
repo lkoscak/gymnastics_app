@@ -5,7 +5,9 @@
 	"main": "server.js",
 	"type": "module",
 	"scripts": {
-		"server": "nodemon server.js --ignore client"
+		"server": "nodemon server.js --ignore client",
+		"client": "cd .. && cd client && npm run dev",
+		"start": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\""
 	},
 	"keywords": [],
 	"author": "",
