@@ -1,4 +1,5 @@
 import express from "express";
+import cors from "cors";
 
 // router
 import beeceptorRouter from "./routes/beeceptorRoutes.js";
@@ -9,6 +10,7 @@ import notFoundMiddleware from "./middleware/not-found.js";
 // app setup
 const app = express();
 app.use(express.json());
+app.use(cors());
 
 // route setup
 app.use("/api/v1/", beeceptorRouter);
