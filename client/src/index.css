@@ -40,7 +40,6 @@
 	--color_bg_widgets: #13151d;
 	--color_bg_error: #ebfff9;
 	--color_upload: #d0f7c6;
-	--color_success: #eefdea;
 }
 
 html {
@@ -113,9 +112,9 @@ h4 {
 .loading {
 	width: 6rem;
 	height: 6rem;
-	border: 5px solid var(--color_tertiaryDark);
+	border: 5px solid var(--color_primary);
 	border-radius: 50%;
-	border-top-color: var(--color_secondaryDark);
+	border-top-color: var(--color_primaryDark);
 	animation: spinner 2s linear infinite;
 	position: fixed;
 	top: 50%;

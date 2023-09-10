@@ -16,7 +16,7 @@ const Navbar = () => {
 				<img src={avatar} alt="User avatar" />
 				<div className="text_sm">Nikola Kavezić</div>
 				<FaChevronDown
-					style={{ "font-size": "12px", cursor: "pointer" }}
+					style={{ fontSize: "12px", cursor: "pointer" }}
 				></FaChevronDown>
 			</div>
 		</Wrapper>
