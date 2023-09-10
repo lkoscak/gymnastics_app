@@ -1,5 +1,5 @@
 import ExpandableButton from "./ExpandableButton";
-import TableRow from "./TableRow";
+import TableDetailsRow from "./TableDetailsRow";
 import { useState } from "react";
 import moment from "moment";
 import ApplicationStatusBadge from "./ApplicationStatusBadge";
@@ -12,8 +12,18 @@ const TableSection = ({ application }) => {
 	};
 	return (
 		<>
-			<tr className="text_sm master">
-				<td>{`${application.firstName} ${application.lastName}`}</td>
+			<tr className={`text_sm master ${isOpen && "toggled"}`}>
+				<td>
+					{`${application.firstName} ${application.lastName}`}
+					{
+						<div className="club">
+							<img
+								src={`https://flagcdn.com/16x12/${application.country.toLowerCase()}.png`}
+							/>
+							<span className="text_xs">{application.club}</span>
+						</div>
+					}
+				</td>
 				<td>{application.discipline || ""}</td>
 				<td>{application.programName || ""}</td>
 				<td>{application.categoryName || ""}</td>
@@ -25,7 +35,7 @@ const TableSection = ({ application }) => {
 				</td>
 				<td className="date">
 					{application.date
-						? moment(application.date).format("DD.M.yyyy. HH:mm")
+						? moment(application.date).format("D.M.yyyy. HH:mm")
 						: ""}
 				</td>
 				<td className="row-function">
@@ -35,7 +45,7 @@ const TableSection = ({ application }) => {
 					<ExpandableButton isOpen={isOpen} toggle={toggle} />
 				</td>
 			</tr>
-			{isOpen && <TableRow />}
+			{isOpen && <TableDetailsRow application={application} />}
 		</>
 	);
 };

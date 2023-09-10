@@ -20,6 +20,12 @@ const Table = ({ applications }) => {
 					{applications.map((application) => (
 						<TableSection key={application.id} application={application} />
 					))}
+					{applications.map((application) => (
+						<TableSection key={application.id} application={application} />
+					))}
+					{applications.map((application) => (
+						<TableSection key={application.id} application={application} />
+					))}
 				</tbody>
 			</table>
 		</div>
