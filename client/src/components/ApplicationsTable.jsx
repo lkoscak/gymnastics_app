@@ -2,11 +2,17 @@ import useAppContext from "../hooks/use-appContext";
 import Table from "./ApplicationsTable/Table";
 
 const ApplicationsTable = () => {
-	const { applications } = useAppContext();
+	const { applications, applicationsDisplayFilters } = useAppContext();
+	const filteredApplications = applications.filter((application) => {
+		return (
+			application.programName === applicationsDisplayFilters.program ||
+			applicationsDisplayFilters.program === "All"
+		);
+	});
 	return (
 		<>
-			<h3>{`All requests (${applications.length})`}</h3>
-			<Table applications={applications}></Table>
+			<h3>{`All requests (${filteredApplications.length})`}</h3>
+			<Table applications={filteredApplications}></Table>
 		</>
 	);
 };

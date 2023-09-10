@@ -4,11 +4,23 @@ import useHttp from "../hooks/use-http";
 const initialState = {
 	applications: null,
 	isLoading: false,
+	applicationsDisplayFilters: {
+		search: "",
+		discipline: "All",
+		program: "Obavezni program",
+		category: "All",
+		status: "All",
+	},
+	setApplicationsDisplayFilters: () => {},
 };
 const AppContext = React.createContext(initialState);
 
 const AppProvider = ({ children }) => {
 	const [applications, setApplications] = useState(null);
+	const [applicationsDisplayFilters, setApplicationsDisplayFilters] = useState(
+		initialState.applicationsDisplayFilters
+	);
+
 	const { isLoading, sendRequest: fetchApplications } = useHttp();
 
 	useEffect(() => {
@@ -19,7 +31,14 @@ const AppProvider = ({ children }) => {
 	}, [fetchApplications, setApplications]);
 
 	return (
-		<AppContext.Provider value={{ applications, isLoading }}>
+		<AppContext.Provider
+			value={{
+				applications,
+				isLoading,
+				applicationsDisplayFilters,
+				setApplicationsDisplayFilters,
+			}}
+		>
 			{children}
 		</AppContext.Provider>
 	);

@@ -2,6 +2,7 @@ import Wrapper from "../assets/wrappers/Navbar";
 import Logo from "./Logo";
 import avatar from "../assets/images/avatar.jpg";
 import { FaChevronDown } from "react-icons/fa";
+import moment from "moment";
 
 const Navbar = () => {
 	return (
@@ -9,7 +10,7 @@ const Navbar = () => {
 			<div className="nav-left-side">
 				<Logo></Logo>
 				<h3 className="title">
-					Competition name · <span>Date</span>
+					Competition name · <span>{moment().format("D.M.yyyy.")}</span>
 				</h3>
 			</div>
 			<div className="nav-right-side">
