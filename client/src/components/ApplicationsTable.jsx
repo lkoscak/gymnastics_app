@@ -5,8 +5,17 @@ const ApplicationsTable = () => {
 	const { applications, applicationsDisplayFilters } = useAppContext();
 	const filteredApplications = applications.filter((application) => {
 		return (
-			application.programName === applicationsDisplayFilters.program ||
-			applicationsDisplayFilters.program === "All"
+			(application.discipline === applicationsDisplayFilters.discipline ||
+				applicationsDisplayFilters.discipline === "All") &&
+			(application.programName === applicationsDisplayFilters.program ||
+				applicationsDisplayFilters.program === "All") &&
+			(application.categoryName === applicationsDisplayFilters.category ||
+				applicationsDisplayFilters.category === "All") &&
+			(application.status === applicationsDisplayFilters.status ||
+				applicationsDisplayFilters.status === "All") &&
+			`${application.firstName.toLowerCase()} ${application.lastName.toLowerCase()}`.includes(
+				(applicationsDisplayFilters.search || "").toLowerCase()
+			)
 		);
 	});
 	return (

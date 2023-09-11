@@ -1,7 +1,7 @@
 import SearchFilter from "./ApplicationsFilter/SearchFilter";
 import SelectFilter from "./ApplicationsFilter/SelectFilter";
 import useAppContext from "../hooks/use-appContext";
-import { useMemo } from "react";
+import { useMemo, useCallback } from "react";
 
 const ApplicationsFilter = () => {
 	const {
@@ -10,80 +10,76 @@ const ApplicationsFilter = () => {
 		setApplicationsDisplayFilters,
 	} = useAppContext();
 
-	const disciplines = useMemo(
-		() =>
-			[
+	const createSelectFilterOptions = useCallback(
+		(key) => {
+			return [
 				"All",
-				...new Set(applications.map((application) => application.discipline)),
+				...new Set(applications.map((application) => application[key])),
 			].map((option) => {
 				return { label: option, value: option };
-			}),
+			});
+		},
 		[applications]
+	);
+
+	const disciplines = useMemo(
+		() => createSelectFilterOptions("discipline"),
+		[createSelectFilterOptions]
 	);
 
 	const programs = useMemo(
-		() =>
-			[
-				"All",
-				...new Set(applications.map((application) => application.programName)),
-			].map((option) => {
-				return { label: option, value: option };
-			}),
-		[applications]
+		() => createSelectFilterOptions("programName"),
+		[createSelectFilterOptions]
 	);
 
 	const categories = useMemo(
-		() =>
-			[
-				"All",
-				...new Set(applications.map((application) => application.categoryName)),
-			].map((option) => {
-				return { label: option, value: option };
-			}),
-		[applications]
+		() => createSelectFilterOptions("categoryName"),
+		[createSelectFilterOptions]
 	);
 
 	const statuses = useMemo(
-		() =>
-			[
-				"All",
-				...new Set(applications.map((application) => application.status)),
-			].map((option) => {
-				return { label: option, value: option };
-			}),
-		[applications]
+		() => createSelectFilterOptions("status"),
+		[createSelectFilterOptions]
+	);
+
+	const filterChangeHandler = useCallback(
+		(filter, value) => {
+			setApplicationsDisplayFilters((state) => {
+				return { ...state, [filter]: value };
+			});
+		},
+		[setApplicationsDisplayFilters]
 	);
 
 	return (
 		<div className="filters-container">
-			<SearchFilter></SearchFilter>
+			<SearchFilter onChange={filterChangeHandler}></SearchFilter>
 			<SelectFilter
 				label="Discipline"
 				name="discipline"
-				onChange={() => {}}
+				initialValue={applicationsDisplayFilters.discipline}
+				onChange={filterChangeHandler}
 				options={disciplines}
 			></SelectFilter>
 			<SelectFilter
 				label="Program"
 				name="program"
 				initialValue={applicationsDisplayFilters.program}
-				onChange={(value) => {
-					setApplicationsDisplayFilters((state) => {
-						return { ...state, program: value };
-					});
-				}}
+				onChange={filterChangeHandler}
 				options={programs}
 			></SelectFilter>
 			<SelectFilter
 				label="Category"
 				name="category"
-				onChange={() => {}}
+				initialValue={applicationsDisplayFilters.category}
+				onChange={filterChangeHandler}
 				options={categories}
 			></SelectFilter>
 			<SelectFilter
 				label="Status"
 				name="status"
-				onChange={() => {}}
+				initialValue={applicationsDisplayFilters.status}
+				onChange={filterChangeHandler}
 				options={statuses}
 			></SelectFilter>
 		</div>

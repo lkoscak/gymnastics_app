@@ -5,9 +5,9 @@ const initialState = {
 	applications: null,
 	isLoading: false,
 	applicationsDisplayFilters: {
-		search: "",
+		search: "c",
 		discipline: "All",
-		program: "Obavezni program",
+		program: "All",
 		category: "All",
 		status: "All",
 	},
