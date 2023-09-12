@@ -163,6 +163,12 @@ h4 {
 	}
 }
 
+@media (max-width: 750px) {
+	.modal {
+		width: 90%;
+	}
+}
+
 @keyframes slide-down {
 	from {
 		opacity: 0;

@@ -38,5 +38,13 @@ const Wrapper = styled.nav`
 			color: var(--color_text_secondary);
 		}
 	}
+	@media (max-width: 550px) {
+		.nav-right-side {
+			gap: 2px;
+			img {
+				display: none;
+			}
+		}
+	}
 `;
 export default Wrapper;

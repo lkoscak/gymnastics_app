@@ -31,8 +31,9 @@ const AppProvider = ({ children }) => {
 	const { isLoading, sendRequest: fetchApplications } = useHttp();
 
 	useEffect(() => {
-		fetchApplications({ url: "/api/v1/application" }, (data) =>
-			setApplications([])
+		fetchApplications(
+			{ url: "http://localhost:5000/api/v1/application" },
+			(data) => setApplications(data)
 		);
 	}, [fetchApplications, setApplications, forceApplicationsFetch]);
 

@@ -12,7 +12,7 @@ import notFoundMiddleware from "./middleware/not-found.js";
 // app setup
 const app = express();
 app.use(express.json());
-//app.use(cors());
+app.use(cors());
 
 // serving static files
 const __dirname = path.dirname(fileURLToPath(import.meta.url));

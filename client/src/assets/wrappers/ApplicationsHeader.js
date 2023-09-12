@@ -11,6 +11,13 @@ const Wrapper = styled.div`
 		display: flex;
 		gap: 10px;
 	}
+
+	@media (max-width: 550px) {
+		.buttons-group {
+			flex-direction: column-reverse;
+			gap: 5px;
+		}
+	}
 `;
 
 export default Wrapper;

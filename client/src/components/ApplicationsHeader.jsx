@@ -15,7 +15,9 @@ const ApplicationsHeader = () => {
 	const toggleNewApplicationForm = () => {
 		setShowNewApplicationForm((state) => !state);
 		if (!countries) {
-			fetchCountries({ url: "/api/v1/country" }, (data) => setCountries(data));
+			fetchCountries({ url: "http://localhost:5000/api/v1/country" }, (data) =>
+				setCountries(data)
+			);
 		}
 	};
 	return (

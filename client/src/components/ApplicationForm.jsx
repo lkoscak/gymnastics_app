@@ -68,7 +68,7 @@ const ApplicationForm = ({ onCancel }) => {
 		}
 		saveApplication(
 			{
-				url: "/api/v1/application",
+				url: "http://localhost:5000/api/v1/application",
 				method: "POST",
 				headers: {
 					"Content-Type": "application/json",

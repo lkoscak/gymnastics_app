@@ -13,6 +13,7 @@ const Wrapper = styled.section`
 		border-radius: 8px;
 		border: 0.5px solid var(--color_divider_medium);
 		overflow-y: scroll;
+		overflow-x: scroll;
 		scrollbar-width: none; /* Firefox */
 		-ms-overflow-style: none; /* Internet Explorer 10+ */
 		margin-bottom: 50px;
@@ -144,6 +145,18 @@ const Wrapper = styled.section`
 				box-shadow: none;
 				outline: none;
 			}
+		}
+	}
+	@media (max-width: 650px) {
+		.table-container::-webkit-scrollbar {
+			/* WebKit */
+			width: 5px;
+			height: 5px;
+		}
+	}
+	@media (max-width: 550px) {
+		.filters-container {
+			flex-direction: column;
 		}
 	}
 `;

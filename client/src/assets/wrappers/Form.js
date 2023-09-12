@@ -61,6 +61,7 @@ const Wrapper = styled.div`
 		top: 18px;
 		padding: 8px 10px 8px 10px;
 	}
+
 	select {
 		color: var(--color_text_primary);
 		padding: 8px 10px 8px 10px;
