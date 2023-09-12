@@ -30,7 +30,6 @@ const getCountries = async (_req, res) => {
 
 const createApplication = async (req, res) => {
 	const application = req.body;
-	console.log(application);
 	if (!application) {
 		res.status(StatusCodes.BAD_REQUEST).json({ msg: "Bad request" });
 	}
