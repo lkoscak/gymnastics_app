@@ -38,7 +38,7 @@
 	--color_userAvatar: #41de1a;
 	--color_bg_me: #13151d;
 	--color_bg_widgets: #13151d;
-	--color_bg_error: #ebfff9;
+	--color_bg_error: #ffebef;
 	--color_upload: #d0f7c6;
 }
 
@@ -119,6 +119,7 @@ h4 {
 	position: fixed;
 	top: 50%;
 	left: 50%;
+	z-index: 10;
 }
 @keyframes spinner {
 	to {

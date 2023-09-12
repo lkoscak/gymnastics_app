@@ -4,9 +4,11 @@ import { useState } from "react";
 import moment from "moment";
 import ApplicationStatusBadge from "./ApplicationStatusBadge";
 import { getApplicationFunctionTextByStatus } from "../../utils/Mappers";
+import useAppContext from "../../hooks/use-appContext";
 
 const TableSection = ({ application }) => {
 	const [isOpen, setOpenState] = useState(false);
+	const { removeApplicationRequest, changeApplicationStatus } = useAppContext();
 	const toggle = () => {
 		setOpenState((state) => !state);
 	};
@@ -38,8 +40,17 @@ const TableSection = ({ application }) => {
 						? moment(application.date).format("D.M.yyyy. HH:mm")
 						: ""}
 				</td>
-				<td className="row-function">
-					{getApplicationFunctionTextByStatus(application.status)}
+				<td>
+					<div
+						className="row-function"
+						onClick={() => {
+							application.status === "applied"
+								? changeApplicationStatus(application.id, "canceled")
+								: removeApplicationRequest(application.id);
+						}}
+					>
+						{getApplicationFunctionTextByStatus(application.status)}
+					</div>
 				</td>
 				<td className="button-td">
 					<ExpandableButton isOpen={isOpen} toggle={toggle} />

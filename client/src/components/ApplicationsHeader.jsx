@@ -3,19 +3,29 @@ import Button from "./UI/Button";
 import Modal from "./UI/Modal";
 import ApplicationForm from "./ApplicationForm";
 import { useState } from "react";
+import useAppContext from "../hooks/use-appContext";
+import useHttp from "../hooks/use-http";
+import Loading from "./UI/Loading";
 
 const ApplicationsHeader = () => {
 	const [showNewApplicationForm, setShowNewApplicationForm] = useState(false);
+	const { countries, setCountries } = useAppContext();
+	const { isLoading, sendRequest: fetchCountries } = useHttp();
 
 	const toggleNewApplicationForm = () => {
 		setShowNewApplicationForm((state) => !state);
+		if (!countries) {
+			fetchCountries({ url: "/api/v1/country" }, (data) => setCountries(data));
+		}
 	};
-
 	return (
 		<>
-			{showNewApplicationForm && (
+			{isLoading && <Loading center={true}></Loading>}
+			{countries && showNewApplicationForm && (
 				<Modal onClick={toggleNewApplicationForm} title="Apply gymnast">
-					<ApplicationForm></ApplicationForm>
+					<ApplicationForm
+						onCancel={toggleNewApplicationForm}
+					></ApplicationForm>
 				</Modal>
 			)}
 			<Wrapper>
@@ -31,7 +41,9 @@ const ApplicationsHeader = () => {
 						}}
 						onClick={toggleNewApplicationForm}
 					>
-						{showNewApplicationForm ? "Apply new" : "New application"}
+						{countries && showNewApplicationForm
+							? "Apply new"
+							: "New application"}
 					</Button>
 					<Button
 						className="text_sm"

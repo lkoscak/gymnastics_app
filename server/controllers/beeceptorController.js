@@ -6,7 +6,6 @@ const getApplications = async (_req, res) => {
 		const response = await fetch(
 			"https://elevien-fe-job.free.beeceptor.com/applications"
 		);
-		console.log(response);
 		const data = await response.json();
 		res.status(StatusCodes.OK).json(data);
 	} catch (error) {
@@ -32,7 +31,6 @@ const getCountries = async (_req, res) => {
 const createApplication = async (req, res) => {
 	const application = req.body;
 	console.log(application);
-
 	if (!application) {
 		res.status(StatusCodes.BAD_REQUEST).json({ msg: "Bad request" });
 	}
@@ -40,6 +38,9 @@ const createApplication = async (req, res) => {
 	try {
 		await fetch("https://elevien-fe-job.free.beeceptor.com/application", {
 			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+			},
 			body: application,
 		});
 		res.status(StatusCodes.CREATED).json({ msg: "Created" });
