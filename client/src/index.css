@@ -129,3 +129,46 @@ h4 {
 .loading-center {
 	margin: 0 auto;
 }
+
+/* Modal */
+.backdrop {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100vh;
+	z-index: 20;
+	background-color: rgba(34, 37, 52, 0.6);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.modal {
+	width: 30%;
+	max-height: 90%;
+	overflow: hidden;
+	background-color: var(--color_bg_base);
+	padding: 20px 40px;
+	border-radius: 8px;
+	z-index: 30;
+	animation: slide-down 200ms ease-out forwards;
+	color: var(--color_text_primaryLight);
+}
+
+@media (max-width: 1400px) {
+	.modal {
+		width: 60%;
+	}
+}
+
+@keyframes slide-down {
+	from {
+		opacity: 0;
+		transform: translateY(-3rem);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
