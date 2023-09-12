@@ -16,9 +16,9 @@ app.use(express.json());
 
 // serving static files
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-app.use(express.static(path.join(__dirname, "../client/dist")));
+app.use(express.static(path.join(__dirname, "dist")));
 app.get("/", (_req, res, _next) => {
-	res.sendFile(path.join(__dirname, "../client/dist", "index.html"));
+	res.sendFile(path.join(__dirname, "dist", "index.html"));
 });
 
 // route setup
