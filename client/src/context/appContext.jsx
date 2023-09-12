@@ -32,7 +32,7 @@ const AppProvider = ({ children }) => {
 
 	useEffect(() => {
 		fetchApplications({ url: "/api/v1/application" }, (data) =>
-			setApplications(data)
+			setApplications([])
 		);
 	}, [fetchApplications, setApplications, forceApplicationsFetch]);
 
