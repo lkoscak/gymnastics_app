@@ -7,9 +7,9 @@
 	"scripts": {
 		"server": "nodemon server.js --ignore client",
 		"client": "cd .. && cd client && npm run dev",
-		"build-client": "cd .. && cd client && npm run build-prod",
+		"build-client": "cd .. && cd client && npm run build",
 		"start": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\"",
-		"build": "npm i && npm run build-client",
+		"build": "npm i",
 		"prod": "node server.js"
 	},
 	"keywords": [],
